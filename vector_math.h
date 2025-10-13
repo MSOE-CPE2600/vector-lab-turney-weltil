@@ -5,15 +5,18 @@
 */
 #include <stdio.h>
 #include "vector.h"
+#include <stdbool.h>
 
 vector add(vector a, vector b);
 vector sub(vector a, vector b);
 vector cross(vector a, vector b);
-vector dot(vector a, vector b);
+double dot(vector a, vector b);
 vector scalar(double mult, vector b);
 void help();
-void clear();
-void quit();
-vector get_vector(vector a);
-void list();
+int clear(vector* listed);
+bool quit();
+vector get_vector(vector* listed, int num_vectors, char named[]);
+void list(vector* listed, int num_vectors);
 void print_vector(vector a);
+vector save_vector(char* string, float x, float y, float z);
+int check_duplicate(vector* listed, int num_vectors, char* named);

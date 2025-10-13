@@ -1,7 +1,7 @@
 CC=gcc
 CFLAGS=-c -Wall
 LDFLAGS= -lncurses
-SOURCES= main.c vector_math.c
+SOURCES= main.c vector_math.c 
 OBJECTS=$(SOURCES:.c=.o)
 EXECUTABLE= compile
 
