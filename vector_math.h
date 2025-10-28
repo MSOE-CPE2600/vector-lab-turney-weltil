@@ -20,3 +20,7 @@ void list(vector* listed, int num_vectors);
 void print_vector(vector a);
 vector save_vector(char* string, float x, float y, float z);
 int check_duplicate(vector* listed, int num_vectors, char* named);
+
+int load(char* filename, vector** list, int num_vectors, int capacity);
+int save(char* filename, vector* list, int num_vectors);
+

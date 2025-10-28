@@ -14,7 +14,8 @@
 #include <ctype.h>
 
 int main(void){
-    vector listed[10];
+    int capacity = 1;
+    vector* listed = malloc(capacity * sizeof(vector));
     char user_input[80];
     char *token;
     char* tokens[5];
@@ -33,7 +34,6 @@ int main(void){
         }
         
         printf("\n");
-        
 
         if(strcmp(tokens[0], "quit") == 0){ //are we ending the program?
             cont = quit();
@@ -41,7 +41,9 @@ int main(void){
             printf("Please enter a command or '-h' for the list of commands\n");
         } else{
             if(strcmp(tokens[0], "clear") == 0){    //clear the saved vectors?
-                num_vectors = clear(listed);
+                capacity = 1;
+                listed = realloc(listed, sizeof(vector));
+                num_vectors = 0;
             }
             else if(strcmp(tokens[0], "list") == 0){    //list the saved vectors?
                 list(listed, num_vectors);
@@ -49,11 +51,29 @@ int main(void){
             else if(strcmp(tokens[0], "-h") == 0){  //display the commands?
                 help();
             }
+            else if(strcmp(tokens[0], "load") == 0){    //load a file?
+                int result = load(tokens[1], &listed, num_vectors, capacity);
+                if(result == -1){
+                    printf("Error loading the file\n");
+                } else{
+                    num_vectors = result;
+                    capacity = result;
+                }
+                    
+            }
+             else if(strcmp(tokens[0], "save") == 0){
+                if(save(tokens[1], listed, num_vectors) == 1){
+                    printf("Error saving to the file\n");
+                }
+            }
             else if(strcmp(tokens[1], "=") == 0){       //storing a vector?
                 bool new_vector = false;
-                if(num_vectors >= 10){
-                    printf("Max saved vectors reached please clear vectors to add more\n");
-                }else if(isdigit(tokens[2][0]) != 0 &&
+                if(num_vectors >= capacity){        //is there more space?
+                    printf("Making space for more vectors\n");
+                    listed = realloc(listed, 2* capacity * sizeof(vector));     //no? make more space
+                    capacity *= 2;
+                } 
+                if(isdigit(tokens[2][0]) != 0 &&
                          isdigit(tokens[3][0]) != 0 && isdigit(tokens[4][0]) != 0){//if setting a vector to a value
                     int index = check_duplicate(listed, num_vectors, tokens[0]);
                     listed[index] = save_vector(
@@ -143,5 +163,9 @@ int main(void){
             }
         }
     } 
-        
+       
+    free(listed);
+    return 0;
 }
+
+
