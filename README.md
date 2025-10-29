@@ -25,4 +25,8 @@
     gcc -o compile main.c vector_math.c
 
 # Use of Dynamic Memory
-    This program uses dynamic memory to store a list of vectors to perform functions with. It starts with space for one vector and adds more space everytime it runs out. If you are manually adding vectors it doubles the capacity everytime space is full, or if loading from a list it adds one more spot per vector. When clearing the list the memory is reallocated back to a capacity of one vector. 
+    This program uses dynamic memory to store a list of vectors to perform functions
+    with. It starts with space for one vector and adds more space everytime it runs
+    out. If you are manually adding vectors it doubles the capacity everytime space
+    is full, or if loading from a list it adds one more spot per vector. When 
+    clearing the list the memory is reallocated back to a capacity of one vector. 
