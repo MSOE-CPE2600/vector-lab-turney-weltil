@@ -56,7 +56,9 @@ void help(){        //prints instructions to the display
                 "b * 2 - outputs the value of b * 2\n"
                 "quit - leaves the program\n"
                 "list - lists all of the sotred vectors\n"
-                "clear - clears the stored vectors\n");
+                "clear - clears the stored vectors\n"
+                "load filename.csv - loads vectors from a valid csv file\n"
+                "save filename.csv - saves current vector list to a csv file\n");
 }
 int clear(vector* listed){  //clears the list of saved vectors
     for(int i = 0; i < 10; i++){

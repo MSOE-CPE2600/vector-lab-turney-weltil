@@ -2,7 +2,7 @@
  * Author: Larissa Welti
  * Date: 10.7.2025
  * Description: Does basic vector math like addition, subtraction, and scalar multiplication
- * can store up to 10 vectors to do math with
+ * can store vectors to do math with
  * To Compile: gcc -o compile main.c vector_math.c
 */
 
